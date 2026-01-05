@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prevención y Detección de la Violencia de Género</title>
+
+<style>
+:root{
+--bg:#f4f4f4;
+--card:#ffffff;
+--text:#222;
+--morado:#6a1b9a;
+--rosa:#ec407a;
+--verde:#2e7d32;
+--rojo:#c62828;
+}
+.dark{
+--bg:#121212;
+--card:#1e1e1e;
+--text:#f1f1f1;
+}
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:var(--bg);
+color:var(--text);
+transition:.4s;
+}
+header{
+background:linear-gradient(90deg,var(--morado),var(--rosa));
+color:white;
+padding:60px 20px;
+text-align:center;
+}
+section{
+max-width:1100px;
+margin:40px auto;
+background:var(--card);
+padding:30px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+h2{
+color:var(--morado);
+border-left:6px solid var(--rosa);
+padding-left:10px;
+}
+h3{color:var(--rosa)}
+button{
+background:var(--morado);
+color:white;
+border:none;
+padding:10px 18px;
+border-radius:10px;
+cursor:pointer;
+margin:6px;
+}
+button:hover{background:var(--rosa);}
+.correct{color:var(--verde)}
+.incorrect{color:var(--rojo)}
+
+.galeria,.scroll-galeria{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:25px;
+}
+.card-img,.img-scroll{
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 6px 18px rgba(0,0,0,.2);
+cursor:pointer;
+transition:.4s;
+position:relative;
+}
+.card-img:hover,.img-scroll:hover{transform:scale(1.05);}
+.card-img img,.img-scroll img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+.card-img div{
+padding:10px;
+font-weight:bold;
+text-align:center;
+}
+.img-scroll{
+opacity:0;
+transform:translateY(50px);
+transition:.7s;
+}
+.img-scroll.show{
+opacity:1;
+transform:translateY(0);
+}
+.numero{
+position:absolute;
+top:10px;
+left:10px;
+width:40px;
+height:40px;
+background:var(--morado);
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+}
+#modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:999;
+}
+#modal img{
+max-width:90%;
+max-height:90%;
+border-radius:15px;
+}
+#modal span{
+position:absolute;
+top:20px;
+right:30px;
+font-size:2em;
+color:white;
+cursor:pointer;
+}
+footer{
+background:#1c1c1c;
+color:white;
+text-align:center;
+padding:30px;
+}
+@media(max-width:600px){
+.card-img img,.img-scroll img{height:180px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Prevención y Detección de la Violencia de Género</h1>
+<p>Proyecto interactivo educativo | Enfoque teórico – práctico</p>
+<button onclick="modoOscuro()">🌙 Modo oscuro</button>
+</header>
+
+<section>
+<h2>¿Qué es la violencia de género?</h2>
+<p>La violencia de género es cualquier acción u omisión basada en el género que cause daño físico, psicológico, sexual, económico o simbólico.</p>
+<p>Tiene su origen en relaciones desiguales de poder y puede ocurrir en ámbitos familiares, escolares, laborales, comunitarios o digitales.</p>
+</section>
+
+<section>
+<h2>¿Por qué es importante prevenirla?</h2>
+<ul>
+<li>Protege la vida y la dignidad humana</li>
+<li>Promueve la igualdad y el respeto</li>
+<li>Reduce consecuencias psicológicas y sociales</li>
+<li>Fortalece comunidades más justas y seguras</li>
+</ul>
+</section>
+
+<section>
+<h2>Consecuencias de la violencia de género</h2>
+<ul>
+<li>Depresión, ansiedad y estrés postraumático</li>
+<li>Aislamiento social</li>
+<li>Bajo rendimiento escolar o laboral</li>
+<li>Riesgo de lesiones graves o feminicidio</li>
+</ul>
+</section>
+
+<section>
+<h2>El ciclo de la violencia</h2>
+<ol>
+<li><b>Acumulación de tensión:</b> control y discusiones</li>
+<li><b>Explosión:</b> agresión física, verbal o emocional</li>
+<li><b>Luna de miel:</b> arrepentimiento y promesas</li>
+</ol>
+</section>
+
+<section>
+<h2>Mitos y realidades</h2>
+<ul>
+<li><b>Mito:</b> “Si no hay golpes, no es violencia”</li>
+<li><b>Realidad:</b> La violencia también puede ser psicológica o económica</li>
+<li><b>Mito:</b> “La víctima provoca la violencia”</li>
+<li><b>Realidad:</b> La responsabilidad siempre es del agresor</li>
+</ul>
+</section>
+
+<section>
+<h2>Galería informativa</h2>
+<div class="galeria">
+<div class="card-img" onclick="abrir('img/imagen1.jpg')"><img src="img/imagen1.jpg" alt="Denuncia"><div>Denuncia</div></div>
+<div class="card-img" onclick="abrir('img/imagen2.jpg')"><img src="img/imagen2.jpg" alt="Acoso"><div>Acoso</div></div>
+<div class="card-img" onclick="abrir('img/imagen3.jpg')"><img src="img/imagen3.jpg" alt="Violentómetro"><div>Violentómetro</div></div>
+<div class="card-img" onclick="abrir('img/imagen4.jpg')"><img src="img/imagen4.jpg" alt="Tipos de violencia"><div>Tipos de violencia</div></div>
+</div>
+</section>
+
+<section>
+<h2>Más ejemplos visuales</h2>
+<div class="scroll-galeria">
+<div class="img-scroll" onclick="abrir('img/imagen5.jpg')"><span class="numero">5</span><img src="img/imagen5.jpg" alt="Ejemplo 5"></div>
+<div class="img-scroll" onclick="abrir('img/imagen6.jpg')"><span class="numero">6</span><img src="img/imagen6.jpg" alt="Ejemplo 6"></div>
+<div class="img-scroll" onclick="abrir('img/imagen7.jpg')"><span class="numero">7</span><img src="img/imagen7.jpg" alt="Ejemplo 7"></div>
+<div class="img-scroll" onclick="abrir('img/imagen8.jpg')"><span class="numero">8</span><img src="img/imagen8.jpg" alt="Ejemplo 8"></div>
+</div>
+</section>
+
+<!-- ====== JUEGO AVANZADO ====== -->
+<section>
+<h2>Minijuego Educativo Avanzado</h2>
+
+<div style="background:#ddd;border-radius:10px;overflow:hidden;margin-bottom:20px">
+<div id="barra" style="width:0%;background:#6a1b9a;color:white;padding:6px;text-align:center">0%</div>
+</div>
+
+<p><b>⏱️ Tiempo:</b> <span id="tiempo">15</span> segundos</p>
+
+<div class="quiz">
+<h3 id="nivel">Nivel: Básico</h3>
+<p id="pregunta"></p>
+<button onclick="responder(true)">Sí</button>
+<button onclick="responder(false)">No</button>
+<p id="resultado"></p>
+<p id="explicacion" style="font-style:italic"></p>
+</div>
+
+<hr>
+
+<div class="quiz">
+<h3>🏆 Resultado Final</h3>
+<p id="puntajeFinal"></p>
+<p id="insignia"></p>
+<button onclick="reiniciarJuego()">🔄 Reiniciar</button>
+</div>
+</section>
+
+<!-- ====== QUIZ ====== -->
+<section>
+<h2>📝 Quiz de Violencia de Género</h2>
+<p id="preguntaQ"></p>
+<div id="opciones"></div>
+<p id="feedbackQ"></p>
+<p><b>Puntaje:</b> <span id="puntajeQ">0</span>/10</p>
+<button onclick="reiniciarQuiz()">🔄 Reiniciar Quiz</button>
+</section>
+
+<section>
+<h2>🚨 ¿Necesitas ayuda?</h2>
+<ul>
+<li><b>911</b> – Emergencias</li>
+<li><b>Línea de la Vida:</b> 800 911 2000</li>
+<li>Atención gratuita, confidencial y 24/7</li>
+</ul>
+</section>
+
+<section>
+<h2>Referencias</h2>
+<ul>
+<li>Organización Mundial de la Salud (OMS)</li>
+<li>ONU Mujeres</li>
+<li>CDC</li>
+<li><a href="https://www.ipn.mx/genero/materiales/protocolo.html" target="_blank">Protocolo IPN</a></li>
+</ul>
+</section>
+
+<footer>
+<p>Proyecto educativo | Violencia de Género</p>
+<p>La información salva vidas 💜</p>
+</footer>
+
+<div id="modal" onclick="cerrar()">
+<span>✖</span>
+<img id="modalImg" alt="Imagen ampliada">
+</div>
+
+<!-- ================= JS ================= -->
+<script>
+/* ===== MODO OSCURO Y MODAL ===== */
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modalImg");
+
+function modoOscuro(){ document.body.classList.toggle("dark"); }
+function abrir(src){ modal.style.display="flex"; modalImg.src=src; }
+function cerrar(){ modal.style.display="none"; }
+
+/* ===== GALERÍA SCROLL ===== */
+const imgs = document.querySelectorAll(".img-scroll");
+window.addEventListener("scroll",()=>{
+imgs.forEach(i=>{
+if(i.getBoundingClientRect().top < window.innerHeight-100){
+i.classList.add("show");
+}
+});
+});
+
+/* ===== JUEGO AVANZADO ===== */
+const preguntas=[
+{p:"Revisar el celular sin permiso",r:true,e:"Es una forma de control."},
+{p:"Insultar constantemente",r:true,e:"La violencia psicológica daña la autoestima."},
+{p:"Respetar decisiones personales",r:false,e:"El respeto NO es violencia."},
+{p:"Amenazar para controlar",r:true,e:"La manipulación es violencia."},
+{p:"Controlar la forma de vestir",r:true,e:"Limita la libertad personal."},
+{p:"Apoyar emocionalmente",r:false,e:"Fortalece relaciones sanas."}
+];
+let index=0,puntaje=0,tiempo=15,timer;
+
+function cargarPregunta(){
+document.getElementById("pregunta").innerText=preguntas[index].p;
+document.getElementById("resultado").innerText="";
+document.getElementById("explicacion").innerText="";
+tiempo=15;
+document.getElementById("tiempo").innerText=tiempo;
+actualizarNivel();
+actualizarBarra();
+iniciarTimer();
+}
+
+function iniciarTimer(){
+clearInterval(timer);
+timer=setInterval(()=>{
+tiempo--;
+document.getElementById("tiempo").innerText=tiempo;
+if(tiempo===0){
+clearInterval(timer);
+avanzar();
+}
+},1000);
+}
+
+function responder(v){
+clearInterval(timer);
+if(v===preguntas[index].r) puntaje++;
+document.getElementById("explicacion").innerText="📘 "+preguntas[index].e;
+avanzar();
+}
+
+function avanzar(){
+setTimeout(()=>{
+index++;
+if(index<preguntas.length) cargarPregunta();
+else finalizarJuego();
+},1200);
+}
+
+function actualizarNivel(){
+let n="Básico";
+if(index>=2) n="Intermedio";
+if(index>=4) n="Avanzado";
+document.getElementById("nivel").innerText="Nivel: "+n;
+}
+
+function actualizarBarra(){
+let p=Math.round((index/preguntas.length)*100);
+document.getElementById("barra").style.width=p+"%";
+document.getElementById("barra").innerText=p+"%";
+}
+
+function finalizarJuego(){
+document.getElementById("puntajeFinal").innerHTML="Obtuviste <b>"+puntaje+"</b> de "+preguntas.length;
+let ins="🥉 Aprendiz";
+if(puntaje>=4) ins="🥈 Observador consciente";
+if(puntaje===preguntas.length) ins="🥇 Defensor de la igualdad";
+document.getElementById("insignia").innerText=ins;
+}
+
+function reiniciarJuego(){
+index=0; puntaje=0; cargarPregunta();
+}
+cargarPregunta();
+
+/* ===== QUIZ ===== */
+const quizVG=[
+{p:"¿Qué es la violencia de género?",o:["Conflictos","Actos que causan daño","Solo física","Privada"],r:1},
+{p:"Revisar celular sin permiso es violencia?",o:["No","Sí","Depende","Normal"],r:1},
+{p:"NO es un tipo de violencia",o:["Física","Psicológica","Económica","Académica"],r:3},
+{p:"Los celos excesivos son:",o:["Amor","Control","Cariño","Respeto"],r:1},
+{p:"Impedir trabajar es violencia:",o:["Física","Económica","Sexual","Ninguna"],r:1},
+{p:"Prevención implica:",o:["Callar","Educar","Justificar","Ignorar"],r:1},
+{p:"Aislamiento social es señal de:",o:["Respeto","Violencia","Independencia","Amor"],r:1},
+{p:"Amenazar para controlar es:",o:["Normal","Emocional","Privado","Aceptable"],r:1},
+{p:"¿Quién puede ser víctima?",o:["Mujeres","Adultos","Cualquiera","Parejas"],r:2},
+{p:"Denunciar permite:",o:["Nada","Apoyo","Problemas","Ignorar"],r:1}
+];
+let q=0,pq=0;
+
+function cargarQuiz(){
+document.getElementById("preguntaQ").innerText=(q+1)+". "+quizVG[q].p;
+const o=document.getElementById("opciones");
+o.innerHTML="";
+quizVG[q].o.forEach((op,i)=>{
+const b=document.createElement("button");
+b.innerText=op;
+b.onclick=()=>responderQuiz(i);
+o.appendChild(b);
+});
+}
+
+function responderQuiz(i){
+if(i===quizVG[q].r) pq++;
+document.getElementById("puntajeQ").innerText=pq;
+q++;
+if(q<quizVG.length) cargarQuiz();
+else document.getElementById("preguntaQ").innerText="🏁 Quiz finalizado";
+}
+
+function reiniciarQuiz(){
+q=0; pq=0;
+document.getElementById("puntajeQ").innerText=0;
+cargarQuiz();
+}
+cargarQuiz();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galería</title>
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<header>
+<h1>Galería informativa</h1>
+<button onclick="history.back()">⬅ Volver</button>
+</header>
+
+<section>
+<h2>Galería informativa</h2>
+
+<div class="galeria">
+
+<div class="card-img" onclick="abrir('img/imagen1.jpg')">
+<img src="img/imagen1.jpg">
+<div>
+<b>Denuncia</b><br>
+Levantar la voz es un acto de valentía y protección.
+</div>
+</div>
+
+<div class="card-img" onclick="abrir('img/imagen2.jpg')">
+<img src="img/imagen2.jpg">
+<div>
+<b>Acoso</b><br>
+Conductas insistentes que generan miedo o incomodidad.
+</div>
+</div>
+
+<div class="card-img" onclick="abrir('img/imagen3.jpg')">
+<img src="img/imagen3.jpg">
+<div>
+<b>Violentómetro</b><br>
+Herramienta para identificar niveles de violencia.
+</div>
+</div>
+
+<div class="card-img" onclick="abrir('img/imagen4.jpg')">
+<img src="img/imagen4.jpg">
+<div>
+<b>Tipos de violencia</b><br>
+Física, psicológica, económica, sexual y digital.
+</div>
+</div>
+
+</div>
+</section>
+
+
+<div id="modal" onclick="cerrar()">
+<span>✖</span>
+<img id="modalImg">
+</div>
+
+<script src="js/galeria.js"></script>
+</body>
+</html>
